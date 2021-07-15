@@ -1,18 +1,20 @@
 import React from 'react';
 
 const NamesList = (props) => {
-    return ( 
+    return (
         <React.Fragment>
             <h1>Exercise 2:</h1>
             <ul>
-                <li>{props.names[0]}</li>
-                <li>{props.names[1]}</li>
-                <li>{props.names[2]}</li>
-                <li>{props.names[3]}</li>
-                <li>{props.names[4]}</li>
+            {props.names.map((names, index) => {
+                return (
+                    <div key={index} >
+                        <li>{names}</li>
+                    </div>
+                );
+            })}
             </ul>
         </React.Fragment>
-     );
+    );
 }
  
 export default NamesList;
