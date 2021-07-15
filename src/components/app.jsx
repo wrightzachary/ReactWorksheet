@@ -5,6 +5,8 @@ import DisplayName from './DisplayName/displayName';
 import NamesList from './NamesList/namesList';
 import SuperheroTable from './Superhero/superhero';
 import CreateSuperhero from './CreateSuperhero/createSuperhero';
+import Jokes from './Jokes/jokes';
+import axios from 'axios';
 
 class App extends Component {
     constructor(props) {
@@ -34,9 +36,22 @@ class App extends Component {
                     primaryAbility: 'Spider senses',
                     secondaryAbility: 'Shoots web'
                 }
-            ]
+            ],
+
+            theJokes: []
 
         }
+    }
+
+    componentDidMount = () => {
+        this.setJoke();
+    }
+
+    setJoke = () => {
+        axios.get('https://official-joke-api.appspot.com/jokes/ten').then(response => {
+            const jokes = response.data;
+            this.setState({theJokes: jokes});
+        });
     }
 
     addSuperhero = (newSuperhero) => {
@@ -61,6 +76,7 @@ class App extends Component {
                 <AlertUser />
                 <SuperheroTable superheroes={this.state.superheroes} />
                 <CreateSuperhero addSuperhero={this.addSuperhero} />
+                <Jokes theJokes={this.state.theJokes} />
             </React.Fragment>
 
         );

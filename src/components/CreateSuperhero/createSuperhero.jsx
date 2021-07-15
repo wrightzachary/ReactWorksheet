@@ -38,9 +38,8 @@ class CreateSuperhero extends Component {
     render() {
         return(
             <React.Fragment>
-                <center>
+                <h1>Exercise 5:</h1>
                     <h3>Add A Superhero</h3>
-                </center>
                 <form onSubmit={this.handleSubmit}>
                     <div className="row col-align">
                         <div className="col-md-4">
